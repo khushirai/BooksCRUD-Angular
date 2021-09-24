@@ -20,7 +20,7 @@
         [ngClass]="{ show: isExpanded }"
       >
         <ul class="navbar-nav flex-grow">
-          <li
+          <li *ngIf="auth.loggedIn"
             class="nav-item"
             [routerLinkActive]="['link-active']"
             [routerLinkActiveOptions]="{ exact: true }"
@@ -35,6 +35,16 @@
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/books']"
               >Books</a
+            >
+          </li>
+          <li *ngIf="!auth.loggedIn" class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" (click)="auth.login()"
+              >Log In</a
+            >
+          </li>
+          <li *ngIf="auth.loggedIn" class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" (click)="auth.logout()"
+              >Log out</a
             >
           </li>
         </ul>

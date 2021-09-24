@@ -5,6 +5,7 @@ import { BookService } from "../services/book.service";
 import * as types from './action.types';
 import * as bookActions from './book.actions';
 import {mergeMap, map} from 'rxjs/operators';
+import { pipe } from 'rxjs';
 
 export class BookEffects {
     constructor(private service: BookService, 
